@@ -15,4 +15,5 @@ Sub makeFolder(strFolder)
 	If Not objFso.FolderExists(strFolder) Then
 		objFso.CreateFolder(strFolder)
 	End If
+	Set objFso = Nothing
 End Sub
