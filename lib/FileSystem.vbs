@@ -5,14 +5,14 @@ Option Explicit
 '@param objFso
 '	FileSystemObject
 '@param strFolder
-'	作成するフォルダのパス
+'	作成するフォルダの【絶対】パス
 Sub makeFolder(objFso, strFolder)
-
 	Dim strParent
 	strParent = objFso.GetParentFolderName(strFolder)
 	If Not objFso.FolderExists(strParent) Then
 		makeFolder objFso, strParent
 	End If
+	
 	If Not objFso.FolderExists(strFolder) Then
 		objFso.CreateFolder(strFolder)
 	End If

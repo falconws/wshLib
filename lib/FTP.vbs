@@ -6,6 +6,6 @@ Sub autoFTP(fileName)
 	Dim objShell
 	
 	Set objShell = CreateObject("WScript.Shell")
-	objShell.Run "ftp.exe -s:" & fileName, , True
+	objShell.Run "ftp.exe -s:" & fileName, 0, True
 	Set objShell = Nothing
 End Sub

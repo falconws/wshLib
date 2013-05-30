@@ -11,7 +11,7 @@ Function md5(filename)
 	Set EL = MSXML.CreateElement("tmp")
 	EL.DataType = "bin.hex"
 	EL.NodeTypedValue = MD5.Hash
-	MsgBox EL.Text
+	md5 = EL.Text
 End Function
 
 ' バイナリファイルを読み込む
