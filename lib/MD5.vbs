@@ -23,7 +23,7 @@ Function readBinaryFile(filename)
 	objStream.Type = adTypeBinary
 	objStream.Open
 	objStream.LoadFromFile filename
-	ReadBinaryFile = objStream.Read
+	readBinaryFile = objStream.Read
 	objStream.Close
 	Set objStream = Nothing
 End Function
