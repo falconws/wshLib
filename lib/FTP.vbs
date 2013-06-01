@@ -8,7 +8,7 @@ Function autoFTP(fileName)
 	Dim strcmd
 	
 	Set objShell = CreateObject("WScript.Shell")
-	strcmd = "cmd /c start /min ftp.exe -s:" & fileName
+	strcmd = "ftp.exe -s:" & fileName
 	Set objExec = objShell.Exec(strcmd)
 	
 	Do Until objExec.Status = 0

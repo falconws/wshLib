@@ -1,6 +1,7 @@
 Option Explicit
 
-' ファイルのMD5ハッシュ値を取得する
+' ファイルのMD5ハッシュ値を取得する。
+' 0KBのファイルを読みこませるとエラーになるので注意。
 '@param filename ファイルのフルパス
 Function md5(filename)
 	Dim MSXML, EL
@@ -14,7 +15,7 @@ Function md5(filename)
 	md5 = EL.Text
 End Function
 
-' バイナリファイルを読み込む
+' バイナリファイルを読み込む。
 '@param filename ファイルのフルパス
 Function readBinaryFile(filename)
 	Const adTypeBinary = 1
