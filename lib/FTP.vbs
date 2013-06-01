@@ -2,10 +2,21 @@ Option Explicit
 
 '引数で受け取ったFTPコマンドファイルを実行する
 '@param fileName 自動実行するFTPコマンドファイルフルパス
-Sub autoFTP(fileName)
-	Dim objShell
+'@return FTPコマンド標準出力
+Function autoFTP(fileName)
+	Dim objShell, objExec
+	Dim strcmd
 	
 	Set objShell = CreateObject("WScript.Shell")
-	objShell.Run "ftp.exe -s:" & fileName, 0, True
+	strcmd = "cmd /c start /min ftp.exe -s:" & fileName
+	Set objExec = objShell.Exec(strcmd)
+	
+	Do Until objExec.Status = 0
+		WScript.Sleep 100
+	Loop
+	
+	autoFTP = objExec.StdOut.ReadAll()
+	
 	Set objShell = Nothing
-End Sub
+	Set objExec = Nothing
+End Function
