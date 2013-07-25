@@ -57,3 +57,33 @@ Function killProcessByName(processName)
 		objProc.Terminate
 	Next
 End Function
+
+'OSをシャットダウンする
+Sub shutdown()
+	Dim objShutdown, objOS, objSystem
+	
+	' シャットダウンオブジェクト取得
+	Set objShutdown = GetObject("winmgmts:{impersonationLevel = impersonate, (Shutdown)}")
+	' OSのオブジェクト取得
+	Set objOS = objShutdown.InstancesOf("Win32_OperatingSystem")
+ 
+	' シャットダウン
+	For Each objSystem In objOS
+    	objSystem.Win32Shutdown 8
+	Next
+End Sub
+
+'OSを再起動する
+Sub reboot()
+	Dim objShutdown, objOS, objSystem
+	
+	' シャットダウンオブジェクト取得
+	Set objShutdown = GetObject("winmgmts:{impersonationLevel = impersonate, (Shutdown)}")
+	' OSのオブジェクト取得
+	Set objOS = objShutdown.InstancesOf("Win32_OperatingSystem")
+ 
+	' 再起動
+	For Each objSystem In objOS
+    	objSystem.Win32Shutdown 2
+	Next
+End Sub
